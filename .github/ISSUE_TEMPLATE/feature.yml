@@ -1,0 +1,39 @@
+name: Feature request
+description: Propose a scoped capability without broadening public promises prematurely.
+title: "[Feature] "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: User problem
+      description: Describe the job, not only the implementation.
+    validations:
+      required: true
+  - type: dropdown
+    id: profile
+    attributes:
+      label: Earliest release profile
+      options:
+        - Technical preview
+        - Public alpha
+        - Complete multi-interface launch
+    validations:
+      required: true
+  - type: checkboxes
+    id: contracts
+    attributes:
+      label: Contract surfaces
+      options:
+        - label: Schema or parser
+        - label: Security/trust boundary
+        - label: Public copy or interface status
+        - label: Agent behavior
+        - label: Example compatibility
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance evidence
+      description: State tests, docs, and proof needed before the feature may be advertised.
+    validations:
+      required: true

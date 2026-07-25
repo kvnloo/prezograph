@@ -1,0 +1,22 @@
+project:
+  title: Prezograph launch system
+  fields:
+    - { name: Status, type: single_select }
+    - { name: Task ID, type: text }
+    - { name: Epic, type: single_select }
+    - { name: Priority, type: single_select }
+    - { name: Milestone, type: single_select }
+    - { name: Owner lane, type: single_select }
+    - { name: Topological depth, type: number }
+    - { name: Launch gate, type: single_select }
+    - { name: Completion evidence, type: text }
+  views:
+    - Ready queue
+    - Blocked
+    - P0 launch gate
+    - Trust and security
+    - Agent surfaces
+    - Site and docs
+    - Roadmap
+    - Post-launch
+  note: Projects-v2 creation is intentionally manual because ownership and permissions are account-specific.

@@ -1,0 +1,7 @@
+---
+description: Prezograph repository contracts
+alwaysApply: true
+---
+
+Read `AGENTS.md`. Treat decks as untrusted content, keep planned interfaces out of available claims,
+and run `npm run check` after changes.

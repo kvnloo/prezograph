@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://prezograph.dev/schema/deck-2.0.json",
+  "title": "Prezograph deck",
+  "type": "object",
+  "required": ["schemaVersion", "meta", "entities", "scenes"],
+  "properties": {
+    "schemaVersion": { "const": "2.0" },
+    "meta": {
+      "type": "object",
+      "required": ["title"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1 },
+        "author": { "type": "string" },
+        "event": { "type": "string" },
+        "date": { "type": "string" },
+        "asOf": { "type": "string" },
+        "repository": { "type": "string", "format": "uri" }
+      },
+      "additionalProperties": true
+    },
+    "entities": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["title"],
+        "properties": {
+          "title": { "type": "string", "minLength": 1 },
+          "sub": { "type": "string" },
+          "body": { "type": "string" },
+          "tip": { "type": "string" },
+          "source": { "type": "string", "format": "uri" },
+          "sourceDate": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "scenes": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/scene" }
+    },
+    "connections": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/edge" }
+    },
+    "theme": {
+      "type": "object",
+      "properties": {
+        "colors": {
+          "type": "object",
+          "additionalProperties": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" }
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "pair": {
+      "type": "array",
+      "prefixItems": [{ "type": "number" }, { "type": "number" }],
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "instance": {
+      "type": "object",
+      "required": ["id", "entity", "pos"],
+      "properties": {
+        "id": { "type": "string" },
+        "entity": { "type": "string" },
+        "pos": { "$ref": "#/$defs/pair" },
+        "kind": { "type": "string" },
+        "w": { "type": "number" },
+        "r": { "type": "number" },
+        "visual": { "enum": ["network7", "table7", "jsonSnippet"] }
+      },
+      "additionalProperties": false
+    },
+    "edge": {
+      "type": "object",
+      "required": ["from", "to"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-zA-Z][a-zA-Z0-9_.:-]*$" },
+        "from": { "type": "string" },
+        "to": { "type": "string" },
+        "label": { "type": "string" },
+        "kind": { "type": "string" },
+        "curve": { "type": "number" }
+      },
+      "additionalProperties": false
+    },
+    "beat": {
+      "type": "object",
+      "required": ["id", "show"],
+      "properties": {
+        "id": { "type": "string" },
+        "label": { "type": "string" },
+        "caption": { "type": "string" },
+        "show": { "type": "array", "items": { "type": "string" } },
+        "focus": { "type": "array", "items": { "type": "string" } },
+        "revealOrder": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
+    "scene": {
+      "type": "object",
+      "required": ["id", "title", "anchor", "instances"],
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string", "minLength": 1 },
+        "caption": { "type": "string" },
+        "anchor": { "$ref": "#/$defs/pair" },
+        "instances": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/instance" } },
+        "edges": { "type": "array", "items": { "$ref": "#/$defs/edge" } },
+        "beats": { "type": "array", "items": { "$ref": "#/$defs/beat" } },
+        "layout": {
+          "type": "object",
+          "properties": {
+            "fitMargin": { "type": "number", "minimum": 0 },
+            "pushMargin": { "type": "number", "minimum": 0 },
+            "zoomMax": { "type": "number", "minimum": 0 },
+            "floatAmp": { "type": "number", "minimum": 0 },
+            "minReadableScale": { "type": "number", "minimum": 0 },
+            "noCard": { "type": "boolean" }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

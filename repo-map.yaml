@@ -1,0 +1,19 @@
+version: 1
+release_profile: technical-preview
+contracts:
+  schema: schemas/deck.schema.json
+  runtime_validator: src/core/schema.js
+  trust_model: docs/TRUST_MODEL.md
+  public_copy: docs/PUBLIC_SURFACES.md
+  releases: docs/RELEASE_PROFILES.md
+  agent_skill: skills/prezograph/SKILL.md
+canonical_sources:
+  application: index.html
+  flagship_deck: examples/graphs-are-awesome/deck.json
+generated:
+  - dist/prezograph.html
+  - dist/site/**
+immutable:
+  - legacy/graph-deck_1.html
+checks:
+  - npm run check

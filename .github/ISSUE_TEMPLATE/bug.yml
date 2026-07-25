@@ -1,0 +1,45 @@
+name: Bug report
+description: Report a reproducible problem in an available interface.
+title: "[Bug] "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Do not attach private decks or secrets. Use a minimal inert JSON reproduction.
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Surface
+      options:
+        - Browser player/editor
+        - JSON validator
+        - CLI validate/stats
+        - Offline single-file export
+        - Static site/docs
+        - Agent Skill
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      placeholder: Tool 0.1.0, schema 2.0
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Minimal reproduction
+      description: Include commands and sanitized JSON when possible.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Browser, logs, and other evidence

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Prezograph</title>
+  <desc id="desc">JSON entities, scenes, and beats connected into an interactive graph presentation.</desc>
+  <rect width="1200" height="630" fill="#f4f0e8"/>
+  <g fill="none" stroke="#9bafa5" stroke-width="3">
+    <path d="M170 410 365 270 585 350 790 195 1030 320"/>
+    <path d="M365 270 420 490 585 350 770 500 1030 320"/>
+  </g>
+  <g fill="#fffdf8" stroke="#17714d" stroke-width="4">
+    <circle cx="170" cy="410" r="38"/>
+    <circle cx="365" cy="270" r="42"/>
+    <circle cx="420" cy="490" r="34"/>
+    <circle cx="585" cy="350" r="52"/>
+    <circle cx="790" cy="195" r="38"/>
+    <circle cx="770" cy="500" r="35"/>
+    <circle cx="1030" cy="320" r="43"/>
+  </g>
+  <text x="90" y="120" fill="#14211c" font-family="system-ui, sans-serif" font-size="76" font-weight="800">Prezograph</text>
+  <text x="94" y="170" fill="#52655c" font-family="ui-monospace, monospace" font-size="24">present the relationships, not just the pages</text>
+</svg>

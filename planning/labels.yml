@@ -1,0 +1,53 @@
+labels:
+  priorities:
+    - name: priority:P0
+      color: b60205
+      description: Required for the selected release profile
+    - name: priority:P1
+      color: d93f0b
+      description: Important follow-up after the selected release gate
+    - name: priority:P2
+      color: fbca04
+      description: Useful improvement with no launch-blocking dependency
+  workstreams:
+    - name: epic:foundation
+      color: 0e8a16
+    - name: epic:trust
+      color: b60205
+    - name: epic:renderer
+      color: 1d76db
+    - name: epic:content
+      color: 5319e7
+    - name: epic:interfaces
+      color: 006b75
+    - name: epic:agents
+      color: c5def5
+    - name: epic:site
+      color: 0075ca
+    - name: epic:documentation
+      color: 0e8a16
+    - name: epic:quality
+      color: d4c5f9
+    - name: epic:release
+      color: e99695
+    - name: epic:operations
+      color: f9d0c4
+    - name: epic:community
+      color: bfdadc
+    - name: epic:governance
+      color: c2e0c6
+  state:
+    - name: blocked
+      color: b60205
+      description: Has an unresolved hard dependency
+    - name: launch-gate
+      color: d93f0b
+      description: Evidence is required before the selected release
+    - name: security
+      color: b60205
+    - name: agent
+      color: c5def5
+    - name: site
+      color: 0075ca
+    - name: release
+      color: e99695

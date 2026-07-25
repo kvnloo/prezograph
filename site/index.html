@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Open-source graph-based presentations from versioned JSON, with browser editing, CLI validation, and offline export.">
+  <meta property="og:title" content="Prezograph">
+  <meta property="og:description" content="Build interactive graph-based presentations from versioned JSON.">
+  <meta property="og:image" content="https://yoheinakajima.github.io/prezograph/social-preview.svg">
+  <meta property="og:image:alt" content="Prezograph: JSON entities, scenes, and beats become an interactive graph presentation.">
+  <meta name="twitter:card" content="summary">
+  <title>Prezograph · Graph-based presentations from JSON</title>
+  <link rel="icon" href="./mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="wordmark" href="./">Prezograph</a>
+    <nav aria-label="Primary">
+      <a href="./app/">Demo</a>
+      <a href="./agents/">For agents</a>
+      <a href="https://github.com/yoheinakajima/prezograph">GitHub</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Technical preview · schema v2.0</p>
+      <h1>Present the relationships, not just the pages.</h1>
+      <p class="lede">Prezograph is an open-source graph-based presentation tool for creating
+        interactive presentations from versioned JSON—in the browser, with local CLI validation and
+        portable single-file export.</p>
+      <div class="actions">
+        <a class="primary" href="./app/">Open the live deck</a>
+        <a href="https://github.com/yoheinakajima/prezograph">View source</a>
+      </div>
+      <p class="truth">Available now: browser player/editor, JSON, local validation/statistics CLI,
+        and offline export. YAML, API, MCP, and hosted sharing are planned.</p>
+    </section>
+
+    <section class="model" aria-labelledby="model-title">
+      <div>
+        <p class="eyebrow">The document model</p>
+        <h2 id="model-title">Facts once. Views locally. Story explicitly.</h2>
+      </div>
+      <ol>
+        <li><strong>Entities</strong><span>Define reusable facts once.</span></li>
+        <li><strong>Scenes</strong><span>Place local visual instances.</span></li>
+        <li><strong>Beats</strong><span>Control show, focus, and reveal order.</span></li>
+      </ol>
+    </section>
+
+    <section class="example" aria-labelledby="example-title">
+      <div>
+        <p class="eyebrow">Flagship example</p>
+        <h2 id="example-title">Graphs Are Awesome</h2>
+        <p>Twelve scenes and thirty-eight explicit beats demonstrate shared entities, cross-scene
+          continuity, progressive company clusters, optional whole-graph exploration, and a
+          presentation whose own structure is the closing proof.</p>
+      </div>
+      <nav class="example-actions" aria-label="Example actions">
+        <a href="./app/">Live</a>
+        <a href="https://github.com/yoheinakajima/prezograph/blob/main/examples/graphs-are-awesome/deck.json">Source</a>
+        <a href="https://raw.githubusercontent.com/yoheinakajima/prezograph/main/examples/graphs-are-awesome/deck.json">Raw</a>
+        <a href="./app/?deck=./examples/graphs-are-awesome/deck.json">Remix</a>
+        <a href="./schema/deck.schema.json">Schema</a>
+        <a href="./version.json">Version</a>
+      </nav>
+    </section>
+
+    <section class="agent-callout">
+      <p class="eyebrow">For AI agents</p>
+      <h2>Turn this into a Prezograph.</h2>
+      <p>Create a graph-based presentation from source material or JSON; validate it, then open it
+        with Prezograph. Agent output stays inert JSON and crosses the same untrusted-content
+        boundary as every other document.</p>
+      <a href="./agents/">Read the agent contract</a>
+    </section>
+  </main>
+
+  <footer>
+    <a href="./">Home</a>
+    <a href="https://github.com/yoheinakajima/prezograph">Source</a>
+    <a href="https://github.com/yoheinakajima/prezograph/tree/main/docs">Docs</a>
+    <a href="./schema/deck.schema.json">Schema</a>
+    <a href="./version.json">Version</a>
+    <a href="https://github.com/yoheinakajima/prezograph/blob/main/LICENSE">License</a>
+    <a href="https://github.com/yoheinakajima/prezograph/security">Security</a>
+    <a href="https://github.com/yoheinakajima/prezograph/discussions">Support</a>
+  </footer>
+</body>
+</html>

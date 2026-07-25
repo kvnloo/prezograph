@@ -1,0 +1,71 @@
+export function nodeHalfSize(instance, measured) {
+  if ((instance.kind ?? "").split(" ").includes("ring")) {
+    const radius = instance.r ?? 90;
+    return { x: radius, y: radius };
+  }
+  return {
+    x: (measured?.width ?? instance.w ?? 180) / 2,
+    y: (measured?.height ?? 80) / 2
+  };
+}
+
+export function boundsFor(instanceIds, instanceMap, measurements = new Map()) {
+  if (!instanceIds.length) return { x0: 0, y0: 0, x1: 1, y1: 1, width: 1, height: 1 };
+  let x0 = Infinity;
+  let y0 = Infinity;
+  let x1 = -Infinity;
+  let y1 = -Infinity;
+  for (const id of instanceIds) {
+    const instance = instanceMap.get(id);
+    if (!instance) continue;
+    const half = nodeHalfSize(instance, measurements.get(id));
+    const x = instance.sceneAnchor[0] + instance.pos[0];
+    const y = instance.sceneAnchor[1] + instance.pos[1];
+    x0 = Math.min(x0, x - half.x);
+    y0 = Math.min(y0, y - half.y);
+    x1 = Math.max(x1, x + half.x);
+    y1 = Math.max(y1, y + half.y);
+  }
+  if (!Number.isFinite(x0)) return { x0: 0, y0: 0, x1: 1, y1: 1, width: 1, height: 1 };
+  return { x0, y0, x1, y1, width: Math.max(1, x1 - x0), height: Math.max(1, y1 - y0) };
+}
+
+export function fitBounds(bounds, viewport, layout, options = {}) {
+  const mobile = viewport.width < 700;
+  const pad = mobile ? Math.min(layout.fitMargin, 54) : layout.fitMargin;
+  const cardSpace = options.cardSpace ?? 0;
+  const availableWidth = Math.max(1, viewport.width - (options.editorWidth ?? 0));
+  const availableHeight = Math.max(1, viewport.height);
+  const ideal = Math.min(
+    availableWidth / (bounds.width + pad * 2),
+    availableHeight / (bounds.height + pad * 2 + cardSpace),
+    layout.zoomMax
+  );
+  const mobileFloor = Math.max(layout.minReadableScale, 0.8);
+  const floor = mobile ? mobileFloor : layout.minReadableScale;
+  const scale = Math.max(floor, ideal);
+  return {
+    x: (bounds.x0 + bounds.x1) / 2,
+    y: (bounds.y0 + bounds.y1) / 2 - (cardSpace ? cardSpace / (2 * scale) : 0),
+    scale,
+    idealScale: ideal,
+    overflow: ideal < floor,
+    availableWidth,
+    availableHeight,
+    pad
+  };
+}
+
+export function borderPoint(node, targetX, targetY) {
+  const dx = targetX - node.x;
+  const dy = targetY - node.y;
+  if (!dx && !dy) return [node.x, node.y];
+  if (node.isRing) {
+    const distance = Math.hypot(dx, dy) || 1;
+    return [node.x + (dx / distance) * node.radius, node.y + (dy / distance) * node.radius];
+  }
+  const halfWidth = node.width / 2 + 6;
+  const halfHeight = node.height / 2 + 6;
+  const scale = Math.min(dx ? halfWidth / Math.abs(dx) : Infinity, dy ? halfHeight / Math.abs(dy) : Infinity, 1);
+  return [node.x + dx * scale, node.y + dy * scale];
+}

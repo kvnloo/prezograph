@@ -1,0 +1,19 @@
+milestones:
+  - id: M0
+    title: M0 — Identity and truth gate
+    exit: Identity, license, namespace, release profile, and public claims are explicit.
+  - id: M1
+    title: M1 — Safe browser foundation
+    exit: Versioned schema, safe document profile, isolated renderer, and hostile fixtures pass.
+  - id: M2
+    title: M2 — Technical preview
+    exit: Browser app, JSON, local CLI validation, offline export, site, and Agent Skill work as documented.
+  - id: M3
+    title: M3 — Public alpha
+    exit: A tested developer interface, release artifacts, accessibility, privacy controls, and executable docs are evidenced.
+  - id: M4
+    title: M4 — Multi-interface candidate
+    exit: Web, CLI, MCP, API, JSON/YAML, Agent Skill, and offline/self-hosted flows pass end-to-end.
+  - id: M5
+    title: M5 — Complete launch
+    exit: Every complete-launch P0 gate has current evidence and no public surface is a dead end.

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Prezograph"
+  short_description: "Create graph-native presentations from source"
+  default_prompt: "Use $prezograph to turn this material into a validated Prezograph deck."
