@@ -22,7 +22,7 @@ await cp(path.join(root, "examples"), path.join(app, "examples"), { recursive: t
 await cp(path.join(root, "schemas"), path.join(app, "schemas"), { recursive: true });
 await cp(path.join(root, "dist/prezograph.html"), path.join(app, "offline.html"));
 await cp(path.join(root, "schemas/deck.schema.json"), path.join(output, "schema/deck.schema.json"));
-await cp(path.join(root, "agents.md"), path.join(output, "agents.md"));
+await cp(path.join(root, "agent-instructions.md"), path.join(output, "agents.md"));
 
 await writeFile(
   path.join(output, "version.json"),

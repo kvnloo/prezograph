@@ -11,6 +11,8 @@ Run date: July 24, 2026
 - `npm run build:site` — passed: static Pages artifact with home, app, agent, raw source,
   schema, and version routes.
 - Portable Agent Skill validation — passed.
+- Cross-platform agent-file portability — covered by separating the coding-agent `AGENTS.md`
+  contract from the source that generates public `/agents.md`; contract tests lock the distinction.
 - `git diff --check` — passed.
 - Node syntax checks for the migration and player — passed.
 - Original attachment vs archived fixture — byte-for-byte match.

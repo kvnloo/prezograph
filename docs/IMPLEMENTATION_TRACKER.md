@@ -40,7 +40,7 @@ Status: completed unless explicitly marked “future”.
 | T-34 | Release | Select technical preview and label later interfaces as planned | `docs/RELEASE_PROFILES.md` |
 | T-35 | Discovery | Enforce truthful first-line copy across README and homepage | contract tests |
 | T-36 | Site | Add static home, agent route, live app, raw source, schema, and version routes | `site/`, Pages build |
-| T-37 | Agents | Add an inert-JSON Agent Skill and raw agent instructions | `skills/prezograph/`, `agents.md` |
+| T-37 | Agents | Add an inert-JSON Agent Skill and raw agent instructions | `skills/prezograph/`, `agent-instructions.md` |
 | T-38 | Governance | Add lane ownership, generated-file boundaries, handoff rules, and repo map | `AGENTS.md`, path instructions |
 | T-39 | GitHub | Add pinned CI/Pages workflows, templates, CODEOWNERS, and Dependabot | `.github/` |
 | T-40 | Planning | Record release, label, milestone, and Projects-v2 contracts without inventing absent DAG records | `planning/` |

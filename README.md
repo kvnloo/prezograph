@@ -58,7 +58,8 @@ Give an agent this repository and start with:
 
 The portable [Prezograph Agent Skill](skills/prezograph/SKILL.md) instructs agents to emit inert
 `.prezograph.json`, never executable HTML. The rendered document remains untrusted content and must
-pass the same validator as a human-authored deck. See [agents.md](agents.md) and the
+pass the same validator as a human-authored deck. See
+[the raw agent instructions](agent-instructions.md) and the
 [trust model](docs/TRUST_MODEL.md).
 
 ## Interface status
@@ -127,6 +128,7 @@ The complete machine-readable contract is [schemas/deck.schema.json](schemas/dec
 - `examples/` — example deck source
 - `docs/` — architecture, audit, and implementation decisions
 - `.github/` and `AGENTS.md` — CI and coding-agent governance
+- `agent-instructions.md` — source for the public `/agents.md` discovery route
 - `legacy/` — the original attached prototype, preserved unchanged
 
 See [CONTRIBUTING.md](CONTRIBUTING.md), [SECURITY.md](SECURITY.md), and

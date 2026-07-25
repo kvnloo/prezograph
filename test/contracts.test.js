@@ -21,7 +21,7 @@ test("README and homepage share the truthful canonical first sentence", async ()
 
 test("agent surfaces require inert JSON and preserve interface status", async () => {
   const files = await Promise.all([
-    read("agents.md"),
+    read("agent-instructions.md"),
     read("skills/prezograph/SKILL.md"),
     read("site/agents/index.html"),
     read("cli/prezograph.mjs"),
@@ -33,6 +33,9 @@ test("agent surfaces require inert JSON and preserve interface status", async ()
     assert.match(content, /MCP/i);
     assert.match(content, /planned/i);
   }
+  const governance = await read("AGENTS.md");
+  assert.match(governance, /coding-agent contract/i);
+  assert.notEqual(governance, files[0], "coding and end-user agent contracts must remain separate");
 });
 
 test("public example exposes six durable actions and no dead-end footer", async () => {

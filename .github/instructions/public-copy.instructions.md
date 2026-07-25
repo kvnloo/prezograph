@@ -1,5 +1,5 @@
 ---
-applyTo: "README.md,site/**,agents.md,skills/**,docs/**,package.json"
+applyTo: "README.md,site/**,agent-instructions.md,skills/**,docs/**,package.json"
 ---
 
 Keep interface claims aligned with the selected technical-preview release profile. JSON, browser,
