@@ -52,6 +52,45 @@ test("stats expose authored graph coverage without treating hidden content as lo
   });
 });
 
+test("scenes without authored beats follow the compiler's implicit show-all behavior", () => {
+  const deck = {
+    schemaVersion: "2.0",
+    entities: { a: { title: "A" }, b: { title: "B" } },
+    scenes: [{
+      id: "one",
+      instances: [
+        { id: "one_a", entity: "a", pos: [0, 0] },
+        { id: "one_b", entity: "b", pos: [1, 0] },
+      ],
+      beats: [],
+    }],
+    connections: [],
+  };
+
+  const stats = collectDeckStats(deck);
+  assert.deepEqual(stats.authoredContent.neverShownInstances, []);
+  assert.equal(stats.authoredContent.placedEntities, 2);
+});
+
+test("invalid unknown entity references do not inflate placed authored entities", () => {
+  const stats = collectDeckStats(
+    {
+      schemaVersion: "2.0",
+      entities: { known: { title: "Known" } },
+      scenes: [{
+        id: "one",
+        instances: [{ id: "bad", entity: "missing", pos: [0, 0] }],
+        beats: [{ id: "first", show: ["bad"] }],
+      }],
+      connections: [],
+    },
+    { valid: false, issues: [{ path: "$.scenes[0].instances[0].entity", message: "unknown" }] },
+  );
+
+  assert.equal(stats.authoredContent.placedEntities, 0);
+  assert.deepEqual(stats.authoredContent.unplacedEntities, ["known"]);
+});
+
 test("stats tolerate missing optional collections for invalid-deck diagnostics", () => {
   const stats = collectDeckStats(
     { schemaVersion: "2.0", entities: {}, scenes: [] },
