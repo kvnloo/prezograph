@@ -4,6 +4,7 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 import { formatIssues, validateDeck } from "../src/core/schema.js";
+import { collectDeckStats } from "../src/core/stats.js";
 
 const [command = "help", input] = process.argv.slice(2);
 
@@ -54,27 +55,7 @@ if (!input) {
       } entities`,
     );
   } else if (command === "stats") {
-    const beats = deck.scenes.reduce((sum, scene) => sum + scene.beats.length, 0);
-    const instances = deck.scenes.reduce((sum, scene) => sum + scene.instances.length, 0);
-    const edges =
-      deck.connections.length +
-      deck.scenes.reduce((sum, scene) => sum + (scene.edges?.length || 0), 0);
-    console.log(
-      JSON.stringify(
-        {
-          schemaVersion: deck.schemaVersion,
-          entities: Object.keys(deck.entities).length,
-          scenes: deck.scenes.length,
-          beats,
-          instances,
-          edges,
-          valid: result.valid,
-          issues: result.issues,
-        },
-        null,
-        2,
-      ),
-    );
+    console.log(JSON.stringify(collectDeckStats(deck, result), null, 2));
     if (!result.valid) process.exitCode = 1;
   } else {
     console.error(`Unknown command: ${command}`);
