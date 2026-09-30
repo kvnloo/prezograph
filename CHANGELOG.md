@@ -8,6 +8,9 @@
 - Added internal semantic-graph canonicalization and regression coverage so future projection,
   serialization, and semantic-zoom work can prove that presentation-only changes do not rewrite
   authored entity identity or edge topology.
+- Added an internal one-cluster semantic-projection experiment. It is renderer-independent,
+  deterministic, reversible at the authored-node identity level, and explicitly accounts for every
+  local authored edge as rendered or suppressed; it is not a public schema or interface.
 
 ## 0.1.0 — 2026-07-24
 
