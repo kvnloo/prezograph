@@ -5,6 +5,9 @@
 - Extended CLI stats with authored-content coverage: placed versus unplaced entities, instances
   never shown by any beat, and local versus cross-scene edge counts. These are diagnostics only;
   hidden or unplaced authored content is preserved rather than treated as invalid.
+- Added internal semantic-graph canonicalization and regression coverage so future projection,
+  serialization, and semantic-zoom work can prove that presentation-only changes do not rewrite
+  authored entity identity or edge topology.
 
 ## 0.1.0 — 2026-07-24
 
