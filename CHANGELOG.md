@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+- Extended CLI stats with authored-content coverage: placed versus unplaced entities, instances
+  never shown by any beat, and local versus cross-scene edge counts. These are diagnostics only;
+  hidden or unplaced authored content is preserved rather than treated as invalid.
+
 ## 0.1.0 — 2026-07-24
 
 - Split the original single-file prototype into core, player, editor, CLI, scripts, schema, example,
