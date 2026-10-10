@@ -2,12 +2,12 @@ export function collectDeckStats(deck, validation = { valid: true, issues: [] })
   const scenes = deck.scenes ?? [];
   const entityIds = Object.keys(deck.entities ?? {});
   const instances = scenes.flatMap((scene) => scene.instances ?? []);
-  const placedEntityIds = new Set(instances.map((instance) => instance.entity));
+  const placedEntityIds = new Set(instances.map((instance) => instance?.entity));
   const visibleInstanceIds = new Set(
     scenes.flatMap((scene) => {
       const sceneInstances = scene.instances ?? [];
       if (!scene.beats?.length) {
-        return sceneInstances.map((instance) => instance.id);
+        return sceneInstances.map((instance) => instance?.id);
       }
       return scene.beats.flatMap((beat) => beat.show ?? []);
     }),
@@ -29,8 +29,8 @@ export function collectDeckStats(deck, validation = { valid: true, issues: [] })
       placedEntities: entityIds.filter((id) => placedEntityIds.has(id)).length,
       unplacedEntities: entityIds.filter((id) => !placedEntityIds.has(id)),
       neverShownInstances: instances
-        .map((instance) => instance.id)
-        .filter((id) => !visibleInstanceIds.has(id)),
+        .map((instance) => instance?.id)
+        .filter((id) => id !== undefined && !visibleInstanceIds.has(id)),
       localEdges,
       crossSceneEdges,
     },
