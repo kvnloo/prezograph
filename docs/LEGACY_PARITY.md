@@ -25,3 +25,26 @@ boundary that should remain stable:
 The reviewed `timeline` and `companies` scenes remain explicit exceptions
 because their content was intentionally redesigned. This harness should not
 turn those reviewed product decisions back into accidental parity requirements.
+
+## What the harness does not compare
+
+- `timeline` and `companies` are skipped entirely for node membership, reveal
+  progression and edge topology. Their ordering, anchors and layout inputs are
+  still checked.
+- The harness drops the legacy node `co_graphlit`, and any edge touching it,
+  before comparing. In the current fixture that node and its one edge appear
+  only in `companies`, which is already skipped, so the filter changes no
+  result today. It would hide a difference if another scene ever included it.
+- `everything` must equal the legacy edge list followed by exactly one extra
+  edge, `i_nrt → i_sea :flight`. Any other added, removed or reordered edge
+  fails.
+- Edges are compared as ordered `from`, `to`, `label` triples. Edge ids, node
+  content and node positions are not compared.
+- Layout parity covers `fitMargin`, `pushMargin`, `zoomMax`, `floatAmp` and
+  `noCard`, and only where the legacy slide sets the key.
+
+The blob identity above can be checked without the test suite:
+
+```
+git hash-object legacy/graph-deck_1.html
+```

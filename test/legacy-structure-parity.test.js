@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { createHash } from "node:crypto";\nimport { readFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
+import { readFile } from "node:fs/promises";
 import { readEmbeddedLegacyDeck } from "./helpers/legacy-fixture.js";
 
 const reviewed = JSON.parse(await readFile(
@@ -86,8 +87,11 @@ test("non-rewritten local edge topology stays equivalent except the documented N
     const expected = legacyEdgeTriples(slide);
 
     if (slide.id === "everything") {
-      assert.deepEqual(actual.slice(0, expected.length), expected);
-      assert.deepEqual(actual.at(-1), ["i_nrt", "i_sea", ":flight"]);
+      assert.deepEqual(
+        actual,
+        [...expected, ["i_nrt", "i_sea", ":flight"]],
+        "everything must be the legacy edges plus exactly the NRT→SEA correction",
+      );
     } else {
       assert.deepEqual(actual, expected, `${slide.id} local edge topology drifted`);
     }
@@ -114,7 +118,7 @@ test("the immutable legacy fixture is exactly the graphcon-deck source baseline"
   const bytes = await readFile(
     new URL("../legacy/graph-deck_1.html", import.meta.url),
   );
-  const header = Buffer.from(`blob ${bytes.length}\\0`);
+  const header = Buffer.from(`blob ${bytes.length}\0`);
   const gitBlob = createHash("sha1").update(header).update(bytes).digest("hex");
   assert.equal(gitBlob, "122528fce2ec42e4872e60d106cf603ac2dc772f");
 });
